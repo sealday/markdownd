@@ -32,7 +32,11 @@ var md = new MarkdownIt({
 
 md.use(emoji);
 md.renderer.rules.emoji = function(token, idx) {
-  return twemoji.parse(token[idx].content);
+  return twemoji.parse(token[idx].content, {
+           base: '/node_modules/twemoji/',
+           folder: 'svg',
+           ext: '.svg'
+         });
 };
 
 function writeMarkdown(input, output) {
