@@ -7,6 +7,13 @@ markdownd is a small Node.js server that enables instant compilation and preview
 A plugin can easily be written for any text editor to interface with it. One currently exists for 
 VIm: https://github.com/suan/vim-instant-markdown
 
+Feature
+-------
+
+- realtime preview (origin feature)
+- support emoji
+- synchronized scroll
+
 Installation
 ------------
 - `[sudo] npm -g install markdownd`
