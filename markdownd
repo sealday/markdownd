@@ -72,14 +72,6 @@ function httpHandler(req, res) {
         .pipe(res);
       break;
 
-    // case 'HEAD':
-      // res.writeHead(200);
-      // res.end();
-      // exec('open -g http://localhost:8090', function(error, stdout, stderr){
-        // http.request({port: 8090})
-      // });
-      // break;
-
     case 'DELETE':
       socket.emit('die');
       process.exit();
