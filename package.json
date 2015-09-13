@@ -13,7 +13,7 @@
     "vim"
   ],
   "description": "Markdown Server",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engine": "node",
   "main": "markdownd",
   "preferGlobal": "true",
