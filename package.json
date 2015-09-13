@@ -6,6 +6,12 @@
     "type": "git",
     "url": "git://github.com/sealday/markdownd"
   },
+  "keywords":[
+    "instant-markdown-d",
+    "markdown",
+    "markdownd",
+    "vim"
+  ],
   "description": "Markdown Server",
   "version": "0.0.3",
   "engine": "node",
