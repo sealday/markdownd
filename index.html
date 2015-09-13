@@ -30,9 +30,11 @@
 
     var socket = io.connect('http://localhost:8090/');
     socket.on('connect', function () {
-      socket.on('newContent', function(newHTML) {
+      socket.on('newContent', function(content) {
+        var newHTML = content.content;
+        var row_num = content.row_num | 0;
         document.querySelector(".markdown-body").innerHTML = newHTML;
-        var marker = document.querySelector("#marker");
+        var marker = document.querySelector(".line[data-line='" + row_num +"']");
         if(marker) {
           window.scrollTo(0, cumulativeOffset(marker).top - SCROLL_PADDING);
         }

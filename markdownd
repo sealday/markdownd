@@ -39,6 +39,18 @@ md.renderer.rules.emoji = function(token, idx) {
          });
 };
 
+function injectLineNumbers(tokens, idx, options, env, self) {
+    var line;
+    if (tokens[idx].map && tokens[idx].level === 0) {
+      line = tokens[idx].map[0];
+      tokens[idx].attrPush([ 'class', 'line' ]);
+      tokens[idx].attrPush([ 'data-line', String(line) ]);
+    }
+    return self.renderToken(tokens, idx, options, env, self);
+  }
+
+md.renderer.rules.paragraph_open = md.renderer.rules.heading_open = injectLineNumbers;
+
 function writeMarkdown(input, output) {
   var body = '';
   input.on('data', function(data) {
@@ -48,7 +60,11 @@ function writeMarkdown(input, output) {
     }
   });
   input.on('end', function() {
-    output.emit('newContent', md.render(body));
+    var row_num = 0;
+    output.emit('newContent',{content: md.render(body.replace(/---cursor---:[0-9]+:/, function(replacement) {
+      row_num = replacement.split(':')[1];
+      return '';
+    })), row_num: row_num});
   });
 }
 
